@@ -80,22 +80,6 @@ class Bzip2Conan(conan_build_helper.CMakePackage):
             if not self._is_llvm_tools_enabled():
                 raise ConanInvalidConfiguration("sanitizers require llvm_tools")
 
-        if self.options.enable_ubsan:
-            if self.options.enable_tests:
-              self.options["conan_gtest"].enable_ubsan = True
-
-        if self.options.enable_asan:
-            if self.options.enable_tests:
-              self.options["conan_gtest"].enable_asan = True
-
-        if self.options.enable_msan:
-            if self.options.enable_tests:
-              self.options["conan_gtest"].enable_msan = True
-
-        if self.options.enable_tsan:
-            if self.options.enable_tests:
-              self.options["conan_gtest"].enable_tsan = True
-
         #del self.settings.compiler.libcxx
         #del self.settings.compiler.cppstd
 
