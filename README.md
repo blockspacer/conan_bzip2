@@ -60,8 +60,10 @@ CONAN_REVISIONS_ENABLED=1 \
       -c --retry 3 \
       --retry-wait 10 \
       --force
-```
 
+# clean build cache
+conan remove "*" --build --force
+```
 
 ## Build with sanitizers support
 
@@ -101,6 +103,9 @@ CONAN_REVISIONS_ENABLED=1 \
       -e bzip2:compile_with_llvm_tools=True \
       -e bzip2:enable_llvm_tools=True \
       -o bzip2:enable_tsan=True
+
+# clean build cache
+conan remove "*" --build --force
 ```
 
 ## How to diagnose errors in conanfile (CONAN_PRINT_RUN_COMMANDS)
