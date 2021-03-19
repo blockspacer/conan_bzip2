@@ -39,3 +39,4 @@ tmp/
 # IDE
 .idea/*
 *.directory
+/CMakeLists.txt.user
