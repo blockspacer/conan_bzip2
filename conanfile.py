@@ -15,9 +15,19 @@ from distutils.util import strtobool
 
 conan_build_helper = python_requires("conan_build_helper/[~=0.0]@conan/stable")
 
+# Users locally they get the 1.0.0 version,
+# without defining any env-var at all,
+# and CI servers will append the build number.
+# USAGE
+# version = get_version("1.0.0")
+# BUILD_NUMBER=-pre1+build2 conan export-pkg . my_channel/release
+def get_version(version):
+    bn = os.getenv("BUILD_NUMBER")
+    return (version + bn) if bn else version
+
 class Bzip2Conan(conan_build_helper.CMakePackage):
     name = "bzip2"
-    version = "1.0.8"
+    version = get_version("1.0.8")
     url = "https://github.com/conan-io/conan-center-index"
     homepage = "http://www.bzip.org"
     license = "bzip2-1.0.8"
